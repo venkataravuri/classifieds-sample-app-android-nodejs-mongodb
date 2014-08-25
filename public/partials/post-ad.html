@@ -1,0 +1,36 @@
+<div ng-controller="postAdController">
+	<div class="alert alert-success" ng-show="alert.show">
+		<a href="#ads" class="close">&times;</a><strong>{{alert.msgTitle}} </strong>{{alert.msgDesc}}
+	</div>
+	<div class="row">
+		<div class="col-sm-2 col-md-2 col-lg-2">
+			<p class="text-center">
+				<a href=""><img ng-src="img/camera-128.jpg"></a>
+			</p>
+			<p class="text-center">Take a snap of sale item</p>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<form name="postAdForm" novalidate>
+				<div class="form-group" ng-class="{'has-error': postAdForm.title.$invalid}">
+					<input type="text" name="title" class="form-control" placeholder="What you're selling ..." ng-model="ad.title" ng-minlength=5 ng-maxlength=20 required />
+					<p class="help-block error" ng-show="postAdForm.title.$dirty && postAdForm.title.$error.required">Selling item name is required.</p>
+					<p class="help-block error" ng-show="postAdForm.title.$error.minlength">Title must be at least 5 characters.</p>
+					<p class="help-block error" ng-show="postAdForm.title.$error.maxlength">Title cannot be longer than 20 characters.</p>
+				</div>
+				<div class="form-group" ng-class="{'has-error': postAdForm.description.$invalid}">
+					<textarea name="description" class="form-control" placeholder="Describe it ..." rows="3" columns="30" ng-model="ad.description"></textarea>
+					<p class="help-block error" ng-show="postAdForm.description.$dirty && postAdForm.description.$error.required">Description is required.</p>
+					<p class="help-block error" ng-show="postAdForm.description.$error.minlength">Description must be at least 5 characters.</p>
+					<p class="help-block error" ng-show="postAdForm.description.$error.maxlength">Description cannot be longer than 20 characters.</p>
+				</div>
+				<div class="form-group" ng-class="{'has-error': postAdForm.price.$invalid}">
+					<input type="text" name="price" class="form-control" placeholder="Price" ng-model="ad.price" required />
+					<p class="help-block error" ng-show="postAdForm.price.$dirty && postAdForm.price.$error.required">Please key-in selling price.</p>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary" ng-disabled="!postAdForm.$valid" ng-click="postAd(ad)">Sell it</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

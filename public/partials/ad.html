@@ -1,0 +1,17 @@
+<div ng-controller="adController">
+	<div class="alert alert-success" ng-show="postAdAlert">
+		<a href="#categories" class="close">&times;</a><strong>Success! </strong>Your sale ad successfully posted. Your ad reference id is '{{ad.id}}'.
+	</div>
+	<div class="row">
+		<div class="col-sm-2 col-md-2 col-lg-2">
+			<p class="text-center">
+				<a href=""><img ng-src="img/camera-128.jpg"></a>
+			</p>
+		</div>
+		<div class="col-sm-6 col-md-6 col-lg-6">
+			<h4 class="">{{ ad.title }}</h4>
+			<div class="">{{ ad.description }}</div>
+			<div class="">{{ ad.price }}</div>
+		</div>
+	</div>
+</div>
