@@ -5,9 +5,12 @@
 	<div class="row">
 		<div class="col-sm-2 col-md-2 col-lg-2">
 			<p class="text-center">
-				<a href=""><img ng-src="img/camera-128.jpg"></a>
+				<a href=""><img ng-src="img/camera-take-snap.png" height="86" width="86"></a>
 			</p>
-			<p class="text-center">Take a snap of sale item</p>
+			<h5 class="text-center">Take a picture of sale item</h5>
+			<h5 class="text-center">
+				<small><code>Ads with photos sell up to 5X more!</code></small>
+			</h5>
 		</div>
 		<div class="col-sm-6 col-md-6 col-lg-6">
 			<form name="postAdForm" novalidate>
@@ -22,6 +25,14 @@
 					<p class="help-block error" ng-show="postAdForm.description.$dirty && postAdForm.description.$error.required">Description is required.</p>
 					<p class="help-block error" ng-show="postAdForm.description.$error.minlength">Description must be at least 5 characters.</p>
 					<p class="help-block error" ng-show="postAdForm.description.$error.maxlength">Description cannot be longer than 20 characters.</p>
+				</div>
+				<div class="form-group dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
+						Choose category <span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						<li ng-repeat="category in categories"><a href="#">{{category.title}}</a></li>
+					</ul>
 				</div>
 				<div class="form-group" ng-class="{'has-error': postAdForm.price.$invalid}">
 					<input type="text" name="price" class="form-control" placeholder="Price" ng-model="ad.price" required />

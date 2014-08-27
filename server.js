@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var express = require('express'), routes = require('./routes'), categories = require('./routes/categories'), ads = require('./routes/ads'), ad = require('./routes/ad'), http = require('http'), path = require('path'), mongo = require('mongodb');
+var express = require('express'), routes = require('./routes'), categories = require('./routes/categories'), search = require('./routes/search'), ads = require('./routes/ads'), ad = require('./routes/ad'), http = require('http'), path = require('path'), mongo = require('mongodb');
 
 var app = express();
 
@@ -9,7 +9,6 @@ var async = require("async");
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
@@ -53,6 +52,7 @@ app.get('/ads/:categoryId', ads.findByCategoryId);
 app.get('/ad/:adId', ad.findById);
 app.post('/ad', ad.addAd);
 app.get('/maxAdId', ad.getMaxAdId);
+app.get('/search/:query', search.search);
 
 http.createServer(app).listen(app.get('port'), function() {
 	console.log('Express server listening on port ' + app.get('port'));

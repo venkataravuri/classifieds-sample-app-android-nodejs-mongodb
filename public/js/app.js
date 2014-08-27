@@ -9,7 +9,10 @@ spiderApp.constant("serverConfig", {
 spiderApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/ads/:categoryId', {
 		templateUrl : 'partials/ads.html',
-		controller : 'searchController'
+		controller : 'adListController'
+	}).when('/ads/search/:query', {
+		templateUrl : 'partials/ads.html',
+		controller : 'adSearchController'
 	}).when('/ad/:adId/:postAdAlert', {
 		templateUrl : 'partials/ad.html',
 		controller : 'adController'

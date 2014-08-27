@@ -7,12 +7,29 @@ spiderApp.controller('categoriesController', function($scope, $http, serverConfi
 	});
 });
 
-spiderApp.controller('searchController', function($scope, $routeParams, $http, serverConfig) {
+spiderApp.controller('adSearchController', function($scope, $routeParams, $http, $location, serverConfig) {
+	$scope.searchAds = function() {
+		$location.path('/ads/search/' + $scope.query);
+	};
+
+});
+
+spiderApp.controller('adListController', function($scope, $routeParams, $http, serverConfig) {
+	// Grab search query off of the route
+	var query = $routeParams.query;
+	if (query != null) {
+		$http.get(serverConfig.url + ':' + serverConfig.port + '/search/' + query).success(function(data) {
+			$scope.ads = data;
+		});
+		return;
+	}
 	// Grab customerID off of the route
 	var categoryId = ($routeParams.categoryId) ? parseInt($routeParams.categoryId) : 0;
-	$http.get(serverConfig.url + ':' + serverConfig.port + '/ads/' + categoryId).success(function(data) {
-		$scope.ads = data;
-	});
+	if (categoryId != 0) {
+		$http.get(serverConfig.url + ':' + serverConfig.port + '/ads/' + categoryId).success(function(data) {
+			$scope.ads = data;
+		});
+	}
 });
 
 spiderApp.controller('adController', function($scope, $routeParams, $http, serverConfig) {
@@ -30,7 +47,19 @@ spiderApp.controller('adController', function($scope, $routeParams, $http, serve
 });
 
 spiderApp.controller('postAdController', function($scope, $routeParams, $http, $location, serverConfig) {
+	$http.get(serverConfig.url + ':' + serverConfig.port + '/categories').success(function(data) {
+		$scope.categories = data;
+	});
+
+	$scope.selectedCategoryId = 0;
+
+	$scope.selectCategory = function(value) {
+		alert(value);
+		$scope.selectedCategoryId = value;
+	};
+
 	$scope.postAd = function(ad) {
+		ad.categoryId = $scope.selectedCategoryId;
 		$http.get(serverConfig.url + ':' + serverConfig.port + '/maxAdId', ad).success(function(maxAdId) {
 			ad.id = maxAdId;
 			console.log('new advertisement id: ' + ad.id);
