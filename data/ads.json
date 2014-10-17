@@ -1,0 +1,78 @@
+[ {
+	"_id" : "1",
+	"categoryId" : "1",
+	"title" : "Samsung Galaxy Note 3",
+	"desc" : "Brand new Samsung Galaxy Note 3.",
+	"price" : "25000",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "1_1.jpg",
+	"userId" : "john"
+}, {
+	"_id" : "2",
+	"categoryId" : "1",
+	"title" : "Nokia Lumia 710",
+	"desc" : "Used Nokia Lumia 712, good condition with all accessories.",
+	"price" : "5000",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "2_1.jpg",
+	"userId" : "peter"
+}, {
+	"_id" : "3",
+	"categoryId" : "1",
+	"title" : "Karbonn Titanium S2 Plus (White)",
+	"desc" : "Brand new phone with Digital Camera Support, Dual Sim (3G + 2G), Android v4.4 OS, 8 MP Primary Camera",
+	"price" : "4999",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "3_1.jpg",
+	"userId" : "peter"
+}, {
+	"_id" : "4",
+	"categoryId" : "1",
+	"title" : "Micromax Canvas Fire A093",
+	"desc" : "Brand new phone, good condition with all accessories.",
+	"price" : "5559",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "4_1.jpg",
+	"userId" : "peter"
+}, {
+	"_id" : "5",
+	"categoryId" : "1",
+	"title" : "XOLO Q2000L",
+	"desc" : "In good condition with all accessories, Dual Sim (GSM + GSM), 8 MP Primary Camera, Android v4.4.2 OS, 2 MP Secondary Camera",
+	"price" : "9,199",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "5_1.jpg",
+	"userId" : "peter"
+}, {
+	"_id" : "6",
+	"categoryId" : "2",
+	"title" : "Samsung Printer",
+	"desc" : "Brand new Samsung printer (SCX-2000), In orignal box, not used.",
+	"price" : "149.99",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "6_1.jpg",
+	"userId" : "peter"
+}, {
+	"_id" : "7",
+	"categoryId" : "6",
+	"title" : "Rockrider Bike",
+	"desc" : "Rockrider cycle in good condition.",
+	"price" : "99.99",
+	"isNegotiable" : true,
+	"postedOn" : "2014-10-25T18:03:00",
+	"location" : "Bangalore",
+	"imageUrl" : "7_1.jpg",
+	"userId" : "john"
+} ]

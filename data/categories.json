@@ -1,0 +1,25 @@
+[ {
+	"_id" : "1",
+	"title" : "Mobiles & Tablets",
+	"icon" : "phone"
+}, {
+	"_id" : "2",
+	"title" : "Electronics & Computers",
+	"icon" : "hdd"
+}, {
+	"_id" : "3",
+	"title" : "Home & Furniture",
+	"icon" : "th"
+}, {
+	"_id" : "4",
+	"title" : "Real Estate",
+	"icon" : "home"
+}, {
+	"_id" : "5",
+	"title" : "Clothing & Accessories",
+	"icon" : "shopping-cart"
+}, {
+	"_id" : "6",
+	"title" : "Others",
+	"icon" : "shopping-cart"
+} ]
