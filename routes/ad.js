@@ -1,12 +1,17 @@
 exports.findById = function(req, res) {
-	console.log('Finding ad by id: ' + req.params.adId);
-
 	db.collection('ads', function(err, collection) {
+		console.log('Finding ad by id: ' + req.params.adId);
 		collection.findOne({
-			'id' : req.params.adId
+			"_id" : req.params.adId
 		}, function(err, ad) {
-			console.log('Retrieved ad: ' + ad.id);
-			res.send(ad);
+			if (err) {
+				console.log('Error while retrieving ad with id: ' + req.params.adId + '. error:' + err.message);
+			} else {
+				if (ad) {
+					console.log('Retrieved ad: ' + ad._id);
+				}
+				res.send(ad);
+			}
 		});
 	});
 };
@@ -14,36 +19,53 @@ exports.findById = function(req, res) {
 exports.addAd = function(req, res) {
 	var ad = req.body;
 
-	db.collection('ads', function(err, collection) {
-		collection.insert(ad, {
-			safe : true
-		}, function(err, result) {
+	getNextSequence("adId", function(err, id) {
+		ad._id = id.toString();
+		console.log('ad sequence number: ' + ad._id);
+		db.collection('ads', function(err, collection) {
+			collection.insert(ad, {
+				safe : true
+			}, function(err, result) {
+				if (err) {
+					console.log('Error: ' + err.message);
+					res.send({
+						'error' : 'An error has occurred'
+					});
+				} else {
+					console.log('Success: ' + JSON.stringify(result[0]));
+					res.send(result[0]);
+				}
+			});
+		});
+	});
+
+};
+
+function getNextSequence(name, callback) {
+	console.log('Get sequence for : ' + name);
+	db.collection('counters', function(err, collection) {
+		collection.findAndModify({
+			_id : "adId"
+		}, // query
+		[], // sort order
+		{
+			$inc : {
+				seq : 1
+			}
+		}, // update
+		{
+			'new' : true,
+			'upsert' : true,
+		}, // options
+		function(err, object) {
 			if (err) {
-				res.send({
-					'error' : 'An error has occurred'
-				});
+				console.log('error while generating next sequence id: ' + err.message);
+				callback(err, null);
 			} else {
-				console.log('Success: ' + JSON.stringify(result[0]));
-				res.send(result[0]);
+				console.log('Next sequence id: ' + object.seq);
+				callback(null, object.seq);
 			}
 		});
 	});
-
 };
 
-exports.getMaxAdId = function(req, res) {
-	db.collection('ads', function(err, collection) {
-		console.log('Retrive ad with max id, to generate sequence number.');
-		collection.find({}, {
-			'limit' : 1,
-			'sort' : [ [ 'id', 'desc' ] ]
-		}).toArray(function(err, ads) {
-			console.log("Maximum id in ads collection: " + ads.length);
-			console.log("Found ad : " + ads[0] + ' max value:' + ads[0].id);
-
-			var id = ++(ads[0].id);
-			console.log("New ad id: " + id);
-			res.send(id + '');
-		});
-	});
-};

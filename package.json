@@ -1,12 +1,20 @@
 {
-  "name": "spider-classifieds",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-	  "express": "3.2.6",
-		  "async": "0.9.0"
-  }
+	"name": "spider-classifieds",
+	"private": true,
+	"version": "1.0.0",
+	"description": "A free online classifieds mobile web app.",
+	"repository": "https://github.com/venkataravuri/spider-classifieds",
+	"license": "MIT",
+	"devDependencies": {
+		"express": "3.2.6",
+		"async": "0.9.0",
+		"mongodb" : "1.4.19",
+		"filestorage" : "1.0.9"
+	},
+	"scripts": {
+		"postinstall": "bower install",
+		 
+		"prestart": "npm install",
+		"start": "node web-server.js"
+	}
 }

@@ -1,0 +1,63 @@
+<div ng-controller="adCtrl">
+	<div class="alert alert-success" ng-show="postAdAlert">
+		<a href="#categories" class="close">&times;</a><strong>Success!</strong>Your advertisement is successfully posted. Your ad reference id is '{{ad._id}}'.
+	</div>
+	<div class="clearfix" style="padding-left: 8px; padding-right: 8px;">
+		<div class="well">
+			<div class="row">
+				<div class="col-md-4" style="font-size: 22px;">{{ ad.title }}</div>
+				<div class="col-md-2">
+					<span class="badge" style="font-size: 18px;">${{ ad.price }}</span><small> (Negotiable)</small>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<small>6:30pm</small>
+				</div>
+				<div class="col-md-2">
+					<button type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-star"></span> Favorite
+					</button>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-4 col-md-2">
+				<a href="#" class="thumbnail"><img ng-src="../img/photos/{{ ad.imageUrl }}" alt="{{ ad.title }}" ng-show="ad.imageUrl != null"> <img
+					ng-src="../img/noimage.jpg" alt="No image" ng-show="ad.imageUrl == null"> </a>
+			</div>
+			<div class="col-xs-8 col-md-4">
+				<div class="row">
+					<div class="well">
+						<div>{{ ad.desc }}</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						<div class="row">
+							<div class="col-xs-2 col-md-1">
+								<div class="glyphicon glyphicon-user"></div>
+							</div>
+							<div class="col-xs-12 col-md-6">
+								<div style="font-size: 16px;">John</div>
+								<div style="font-size: 18px;">9880696525</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						<div class="row">
+							<div class="col-xs-2 col-md-1">
+								<div class="glyphicon glyphicon-map-marker"></div>
+							</div>
+							<div class="col-xs-12 col-md-6">
+								<div style="font-size: 16px;">{{ad.location}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

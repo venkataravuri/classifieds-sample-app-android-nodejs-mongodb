@@ -1,0 +1,32 @@
+<div ng-controller="adsCtrl">
+	<div class="list-group">
+		<a ng-repeat="ad in ads" class="list-group-item" href="#ad/{{ad._id}}/false">
+			<div class="row">
+				<div class="col-md-2">
+					<img ng-src="../img/photos/{{ ad.imageUrl }}" alt="{{ ad.title }}" ng-show="ad.imageUrl != null"> <img ng-src="../img/noimage.jpg" alt="No image"
+						ng-show="ad.imageUrl == null">
+				</div>
+				<div class="col-md-8">
+					<div class="row">
+						<div class="col-md-4 list-group-item-heading" style="font-size: 22px;">{{ ad.title }}</div>
+						<div class="col-md-2">
+							<span class="badge" style="font-size: 18px;">${{ ad.price }}</span>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="list-group-item-text">{{ad.desc}}</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-6">
+							<div class="glyphicon glyphicon-map-marker">
+								<span class="list-group-item-text">{{ad.location}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>

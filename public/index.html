@@ -6,18 +6,23 @@
 <title>Spider Classifieds</title>
 <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
 <link href="css/app.css" rel="stylesheet" />
-<link href="libs/ui-bootstrap/bootstrap.css" rel="stylesheet" />
-<link href="libs/ui-bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-<script src="libs/angularjs/1.2.0/angular.js"></script>
-<script src="libs/angularjs/1.2.0/angular-route.js"></script>
-<script src="libs/ui-bootstrap/ui-bootstrap-0.11.0.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controller.js"></script>
+<link href="libs/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
 	<div ng-init="ads = []"></div>
-	<div ng-include src="'partials/header.html'"></div>
+	<div ng-include src="'shared/header.html'"></div>
 	<div ng-view></div>
+
+	<script src="libs/bower_components/angular/angular.min.js"></script>
+	<script src="libs/bower_components/angular-route/angular-route.min.js"></script>
+	<script src="libs/bower_components/angular-strap/dist/angular-strap.min.js"></script>
+	<script src="libs/bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+
+	<script src="app.js"></script>
+	<script src="shared/shared.js"></script>
+	<script src="categories/categories.js"></script>
+	<script src="postad/postad.js"></script>
+	<script src="ads/ads.js"></script>
+	<script src="ad/ad.js"></script>
 </body>
 </html>

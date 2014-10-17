@@ -1,7 +1,7 @@
-<div ng-controller="categoriesController">
+<div ng-controller="categoriesCtrl">
 	<div class="list-group">
 		<div>
-			<a ng-repeat="category in categories" class="list-group-item" href="#ads/{{category.id}}">
+			<a ng-repeat="category in categories" class="list-group-item" href="#ads/{{category._id}}">
 				<h4 class="list-group-item-heading">
 					<span style="color: SlateBlue" class="glyphicon glyphicon-{{category.icon}}">&nbsp;</span>{{ category.title }}
 				</h4>

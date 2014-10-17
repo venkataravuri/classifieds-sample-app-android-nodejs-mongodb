@@ -1,4 +1,4 @@
-<div ng-controller="postAdController">
+<div ng-controller="postAdCtrl">
 	<div class="alert alert-success" ng-show="alert.show">
 		<a href="#ads" class="close">&times;</a><strong>{{alert.msgTitle}} </strong>{{alert.msgDesc}}
 	</div>
@@ -21,18 +21,16 @@
 					<p class="help-block error" ng-show="postAdForm.title.$error.maxlength">Title cannot be longer than 20 characters.</p>
 				</div>
 				<div class="form-group" ng-class="{'has-error': postAdForm.description.$invalid}">
-					<textarea name="description" class="form-control" placeholder="Describe it ..." rows="3" columns="30" ng-model="ad.description"></textarea>
+					<textarea name="description" class="form-control" placeholder="Describe it ..." rows="3" columns="30" ng-model="ad.desc"></textarea>
 					<p class="help-block error" ng-show="postAdForm.description.$dirty && postAdForm.description.$error.required">Description is required.</p>
 					<p class="help-block error" ng-show="postAdForm.description.$error.minlength">Description must be at least 5 characters.</p>
 					<p class="help-block error" ng-show="postAdForm.description.$error.maxlength">Description cannot be longer than 20 characters.</p>
 				</div>
-				<div class="form-group dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
-						Choose category <span class="caret"></span>
+				<div class="form-group">
+					<button type="button" class="btn btn-default" ng-model="ad.categoryId" data-placeholder="Choose category"
+						ng-options="category._id as category.title for category in categories" bs-select>
+						<span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-						<li ng-repeat="category in categories"><a href="#">{{category.title}}</a></li>
-					</ul>
 				</div>
 				<div class="form-group" ng-class="{'has-error': postAdForm.price.$invalid}">
 					<input type="text" name="price" class="form-control" placeholder="Price" ng-model="ad.price" required />
